@@ -36,20 +36,20 @@
           <!-- question box end -->
           <!-- answer box start -->
           <div id="answer-box" v-if="currQuestion && !submitted">
-              <div id="answer-title">
-                <h4>Answers</h4>
-              </div>
-              <div class="input-answer">
+            <section id="answer-box-content">
+              <div id="answer-content">
+                <div id="answer-title">
+                  <h4>Answers</h4>
+                </div>
+                <div class="input-answer">
                   <input type="text" name="answer" value="Type answer here" v-model="ans">
                   <button @click="addAnswer(ans)">Add Another Answer</button>
-              </div>
-              <div class="input-answer" v-for="item in currAnswers">
+                </div>
+                <div class="input-answer" v-for="item in currAnswers">
                   <input type="text" name="answer" :value="item" readonly>
+                </div>
               </div>
-              <div class="bottom-submission">
-                  <button>Add Question</button>
-                  <button @click="triggerSubmit()">Submit</button>
-              </div>
+            </section>
           </div>
            <!-- answer box end -->
           <!-- submission page start-->
@@ -61,12 +61,18 @@
                 <option value="subQ">{{currQuestion}}</option>
                 <option v-for="subA in currAnswers" value="subA">{{subA}}</option>
             </select>
-            <div class="bottom-submission">
-                <button>Add Question</button>
-                <button @click="triggerFinish()">Submit</button>
-            </div>
           </div>
           <!-- submission page end-->
+          <!-- footer button-->
+          <footer>
+            <div id="bottom-submission">
+              <button v-if="!finished">Add Question</button>
+              <button v-if="!submitted && currAnswers.length <= 1" @click="triggerReset()">Done</button>
+              <button v-if="!submitted && currAnswers.length > 1" @click="triggerSubmit()">Preview</button>
+              <button v-if="submitted && !finished" @click="triggerFinish()">Submit</button>
+            </div>
+          </footer>
+          <!-- footer button-->
         </div>
       </div>
     </div>

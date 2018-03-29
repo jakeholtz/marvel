@@ -1,10 +1,34 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Marvel</title>
+    <title>Survey Squirrel</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
-    <h1>Marvel</h1>
+    <div id="app">
+      <div id="header-box">
+        <header>
+            <h1>Survey Squirrel</h1>
+        </header>
+      </div>
+      <div id="content-box">
+        <div id="survey-box">
+          <div id="survey-title">
+            <h2>Welcome to Survey Squirrel. Let's build a survey!</h2>
+          </div>
+          <div id="question-box">
+            <div id="question-title">
+              <h4>What's your question?</h4>
+            </div>
+            <div id="input-box">
+                <input type="text" name="question" value="Type question here.">
+                <button>Save Question</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="index.js"></script>
   </body>
 </html>

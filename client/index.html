@@ -14,17 +14,59 @@
       <div id="content-box">
         <div id="survey-box">
           <div id="survey-title">
-            <h2>Welcome to Survey Squirrel. Let's build a survey!</h2>
+            <h2 v-if="!submitted">Welcome to Survey Squirrel. Let's build a survey!</h2>
+            <h2 v-else-if="!finished">Review Survey</h2>
+            <h2 v-if="finished">Your survey has been created!</h2>
+            <button v-if="finished" @click="triggerReset()">Start Another Survey</button>
+            </div>
           </div>
-          <div id="question-box">
+          <!-- question box start -->
+          <div id="question-box" v-if="!submitted">
             <div id="question-title">
-              <h4>What's your question?</h4>
+              <h4>{{!currQuestion ? "What's your question?" : "Question 1"}}</h4>
             </div>
-            <div id="input-box">
-                <input type="text" name="question" value="Type question here.">
-                <button>Save Question</button>
+            <div class="input-box" v-if="!currQuestion">
+                <input type="text" name="question" value="Type question here." v-model="ques">
+                <button @click="addQuestion(ques)">Save Question</button>
+            </div>
+            <div class="input-box" v-else>
+                <input type="text" name="question" :value="currQuestion" readonly>
             </div>
           </div>
+          <!-- question box end -->
+          <!-- answer box start -->
+          <div id="answer-box" v-if="currQuestion && !submitted">
+              <div id="answer-title">
+                <h4>Answers</h4>
+              </div>
+              <div class="input-answer">
+                  <input type="text" name="answer" value="Type answer here" v-model="ans">
+                  <button @click="addAnswer(ans)">Add Another Answer</button>
+              </div>
+              <div class="input-answer" v-for="item in currAnswers">
+                  <input type="text" name="answer" :value="item" readonly>
+              </div>
+              <div class="bottom-submission">
+                  <button>Add Question</button>
+                  <button @click="triggerSubmit()">Submit</button>
+              </div>
+          </div>
+           <!-- answer box end -->
+          <!-- submission page start-->
+          <div id="submission box" v-if="submitted && !finished">
+            <div id="submission-title">
+              <h4>Question 1</h4>
+            </div>
+            <select>
+                <option value="subQ">{{currQuestion}}</option>
+                <option v-for="subA in currAnswers" value="subA">{{subA}}</option>
+            </select>
+            <div class="bottom-submission">
+                <button>Add Question</button>
+                <button @click="triggerFinish()">Submit</button>
+            </div>
+          </div>
+          <!-- submission page end-->
         </div>
       </div>
     </div>

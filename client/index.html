@@ -24,7 +24,7 @@
               <h4>{{!currQuestion ? "What's your question?" : "Question 1"}}</h4>
             </div>
             <div class="input-box" v-if="!currQuestion">
-                <input type="text" name="question" value="Type question here." v-model="ques">
+                <input type="text" name="question" placeholder="Type question here." v-model="ques">
                 <button @click="addQuestion(ques)">Save Question</button>
             </div>
             <div class="input-box" v-else-if="!submitted">

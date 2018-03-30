@@ -9,7 +9,7 @@ Files included in client/
  
 File has two bugs:
  - Issue with input binding after pressing a button. It's recommended to just write over old input. (FIXED 3/30)
- - Drop Down menu in "Review Your Survey" section should be optimized
+ - Drop Down menu in "Review Your Survey" section should be optimized (IMPROVED 3/30)
  
  Recommendatations:
  - Open with Google Chrome with Page Size at 100%

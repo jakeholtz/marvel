@@ -2,14 +2,13 @@
   <head>
     <meta charset="UTF-8">
     <title>Survey Squirrel</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+    <link rel="stylesheet" type="text/css" href="newstyles.css">
   </head>
   <body>
     <div id="app">
       <div id="header-box">
-        <header>
-            <h1>Survey Squirrel</h1>
-        </header>
+        <h1 id="survey squirrel">Survey Squirrel</h1>
       </div>
       <div id="content-box">
         <div id="survey-box">
@@ -21,7 +20,7 @@
             </div>
           </div>
           <!-- question box start -->
-          <div id="question-box" v-if="!submitted">
+          <div id="question-box" v-if="!finished">
             <div id="question-title">
               <h4>{{!currQuestion ? "What's your question?" : "Question 1"}}</h4>
             </div>
@@ -29,8 +28,14 @@
                 <input type="text" name="question" value="Type question here." v-model="ques">
                 <button @click="addQuestion(ques)">Save Question</button>
             </div>
-            <div class="input-box" v-else>
+            <div class="input-box" v-else-if="!submitted">
                 <input type="text" name="question" :value="currQuestion" readonly>
+            </div>
+            <div class="input-box" v-if="submitted">
+              <select>
+                  <option value="subQ">{{currQuestion}}</option>
+                  <option v-for="subA in currAnswers" value="subA">{{subA}}</option>
+              </select>
             </div>
           </div>
           <!-- question box end -->
@@ -52,24 +57,13 @@
             </section>
           </div>
            <!-- answer box end -->
-          <!-- submission page start-->
-          <div id="submission box" v-if="submitted && !finished">
-            <div id="submission-title">
-              <h4>Question 1</h4>
-            </div>
-            <select>
-                <option value="subQ">{{currQuestion}}</option>
-                <option v-for="subA in currAnswers" value="subA">{{subA}}</option>
-            </select>
-          </div>
-          <!-- submission page end-->
           <!-- footer button-->
           <footer>
             <div id="bottom-submission">
-              <button v-if="!finished">Add Question</button>
-              <button v-if="!submitted && currAnswers.length <= 1" @click="triggerReset()">Done</button>
-              <button v-if="!submitted && currAnswers.length > 1" @click="triggerSubmit()">Preview</button>
-              <button v-if="submitted && !finished" @click="triggerFinish()">Submit</button>
+              <button class="grey" v-if="!finished">Add Question</button>
+              <button class="blue" v-if="!submitted && currAnswers.length <= 1" @click="triggerReset()">Done</button>
+              <button class="blue" v-if="!submitted && currAnswers.length > 1" @click="triggerSubmit()">Preview</button>
+              <button class="blue" v-if="submitted && !finished" @click="triggerFinish()">Submit</button>
             </div>
           </footer>
           <!-- footer button-->

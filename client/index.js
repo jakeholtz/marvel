@@ -14,7 +14,6 @@ const app = new Vue({
     addAnswer: function(answer) {
       this.currAnswers.push(answer);
       return null;
-      // app.$el.children[1].children[0].children[2].children[1].children[0].value = "Type answer here"
     },
     triggerSubmit: function() {
       this.submitted = true;

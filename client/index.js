@@ -31,5 +31,3 @@ const app = new Vue({
     },
   }
 })
-
-// function addQuestions(ques)

@@ -41,6 +41,15 @@
 		line-height: 62px;
 		color: #3F3F3F;
 	}
+	button {
+		background-color: #009BAB;
+		border: 1px solid #007480;
+		font-weight: 200px;
+		border-radius: 2px;
+		width: 249px;
+		height: 40px;
+		margin: 70 380px 0 380px;
+	}
 }
 #question-box {
 	width: 914px;
@@ -139,23 +148,23 @@ footer {
 		width: 125px;
 		height: 40px;
 	}
-	button.grey {
-		background-color: #F2F2F2;
-		color: #3F3F3F;
-		font-size: 14px;
-		font-weight: 500;
-		line-height: 17px;
-		text-align: center;
-	}
-	button.blue {
-		background-color: #009BAB;
-		border: 1px solid #007480;
-		color: #FFFFFF;
-		font-size: 14px;
-		font-weight: 500;
-		line-height: 17px;
-		text-align: center;
-	}
+}
+.grey {
+	background-color: #F2F2F2;
+	color: #3F3F3F;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 17px;
+	text-align: center;
+}
+.blue {
+	background-color: #009BAB;
+	border: 1px solid #007480;
+	color: #FFFFFF;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 17px;
+	text-align: center;
 }
 input[type=text] {
 	padding-left: 12px;
@@ -165,4 +174,25 @@ input[type=text] {
 	letter-spacing: -0.57px;
 	line-height: 62px;
 	text-align: left;
+}
+select {
+	width: 758px;
+	height: 60px;
+	background-color: #FFFFFF;
+	border: 1px solid #979797;
+	border-radius: 4px;
+	color: #3F3F3F;
+	font-size: 22px;
+	font-weight: 300;
+	letter-spacing: -0.57px;
+	line-height: 62px;
+	text-align: left;
+}
+button {
+	&:focus {
+		outline: 0;
+	}
+}
+#survey-box.isEnlarged {
+	height: 267px;
 }

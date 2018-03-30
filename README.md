@@ -8,7 +8,7 @@ Files included in client/
  - style.css - CSS file that is compiled into by styles.less
  
 File has two bugs:
- - Issue with input binding after pressing a button. It's recommended to just write over old input.
+ - Issue with input binding after pressing a button. It's recommended to just write over old input. (FIXED 3/30)
  - Drop Down menu in "Review Your Survey" section should be optimized
  
  Recommendatations:

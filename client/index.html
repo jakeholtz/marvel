@@ -46,7 +46,7 @@
                   <h4>Answers</h4>
                 </div>
                 <div class="input-answer">
-                  <input type="text" name="answer" value="Type answer here" v-model.lazy="ans">
+                  <input type="text" name="answer" placeholder="Type answer here." v-model.lazy="ans">
                   <button @click="addAnswer(ans)" @mouseover="alert(1)">Add Another Answer</button>
                 </div>
                 <div class="input-answer" v-for="item in currAnswers">

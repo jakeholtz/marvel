@@ -5,6 +5,7 @@ const app = new Vue({
     currAnswers: [],
     submitted: false,
     finished: false,
+    enlarged: false,
   },
   methods: {
     addQuestion: function(question) {
@@ -12,6 +13,7 @@ const app = new Vue({
     },
     addAnswer: function(answer) {
       this.currAnswers.push(answer);
+      return null;
       // app.$el.children[1].children[0].children[2].children[1].children[0].value = "Type answer here"
     },
     triggerSubmit: function() {
@@ -19,12 +21,14 @@ const app = new Vue({
     },
     triggerFinish: function() {
       this.finished = true;
+      this.enlarged = true;
     },
     triggerReset: function() {
       this.currQuestion = null;
       this.currAnswers = [];
       this.submitted = false;
       this.finished = false;
+      this.enlarged = false;
     },
   }
 })

@@ -2,8 +2,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Survey Squirrel</title>
-    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
-    <link rel="stylesheet" type="text/css" href="newstyles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
     <div id="app">
@@ -11,12 +10,12 @@
         <h1 id="survey squirrel">Survey Squirrel</h1>
       </div>
       <div id="content-box">
-        <div id="survey-box">
+        <div id="survey-box" v-bind:class="{ isEnlarged: enlarged }">
           <div id="survey-title">
             <h2 v-if="!submitted">Welcome to Survey Squirrel. Let's build a survey!</h2>
             <h2 v-else-if="!finished">Review Survey</h2>
             <h2 v-if="finished">Your survey has been created!</h2>
-            <button v-if="finished" @click="triggerReset()">Start Another Survey</button>
+            <button class="blue" v-if="finished" @click="triggerReset()">Start Another Survey</button>
             </div>
           </div>
           <!-- question box start -->
@@ -32,9 +31,9 @@
                 <input type="text" name="question" :value="currQuestion" readonly>
             </div>
             <div class="input-box" v-if="submitted">
-              <select>
-                  <option value="subQ">{{currQuestion}}</option>
-                  <option v-for="subA in currAnswers" value="subA">{{subA}}</option>
+              <select size=20>
+                <option class="o-first" value="subQ">{{currQuestion}}</option>
+                <option class="o-second" v-for="subA in currAnswers" value="subA">{{subA}}</option>
               </select>
             </div>
           </div>
@@ -47,8 +46,8 @@
                   <h4>Answers</h4>
                 </div>
                 <div class="input-answer">
-                  <input type="text" name="answer" value="Type answer here" v-model="ans">
-                  <button @click="addAnswer(ans)">Add Another Answer</button>
+                  <input type="text" name="answer" value="Type answer here" v-model.lazy="ans">
+                  <button @click="addAnswer(ans)" @mouseover="alert(1)">Add Another Answer</button>
                 </div>
                 <div class="input-answer" v-for="item in currAnswers">
                   <input type="text" name="answer" :value="item" readonly>
@@ -61,7 +60,8 @@
           <footer>
             <div id="bottom-submission">
               <button class="grey" v-if="!finished">Add Question</button>
-              <button class="blue" v-if="!submitted && currAnswers.length <= 1" @click="triggerReset()">Done</button>
+              <button class="blue" v-if="!submitted && currAnswers.length < 1" @click="triggerReset()">Done</button>
+              <button class="blue" v-if="!submitted && currAnswers.length === 1" @click="triggerSubmit()">Done</button>              
               <button class="blue" v-if="!submitted && currAnswers.length > 1" @click="triggerSubmit()">Preview</button>
               <button class="blue" v-if="submitted && !finished" @click="triggerFinish()">Submit</button>
             </div>
